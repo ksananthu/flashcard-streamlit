@@ -4,6 +4,25 @@
 header {visibility: hidden;}
 footer {visibility: hidden;}
 
+/* Force Light Mode */
+html, body, [data-testid="stAppViewContainer"] {
+    background-color: white !important;
+    color: black !important;
+}
+
+/* Override default Streamlit widget colors */
+[data-testid="stSidebar"], [data-testid="stHeader"] {
+    background-color: white !important;
+    color: black !important;
+}
+
+/* Override dark mode elements */
+:root {
+    --primary-background-color: white !important;
+    --text-color: black !important;
+}
+
+
 /* Remove extra top space */
 .block-container {
     padding-top: 40px !important;

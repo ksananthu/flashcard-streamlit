@@ -178,3 +178,4 @@ pyrightconfig.json
 # my selection
 .dockerignore
 **/__pycache__/
+data/*.db
