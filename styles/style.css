@@ -1,0 +1,31 @@
+/* General Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Streamlit Container */
+.stApp {
+    max-width: 400px;
+    margin: auto;
+}
+
+/* Buttons */
+button {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Headers */
+h1, h2, h3 {
+    text-align: center;
+    color: #444;
+}
