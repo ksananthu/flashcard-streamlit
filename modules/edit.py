@@ -26,8 +26,8 @@ def show_edit_page():
     synonyms = ", ".join(json.loads(synonyms)) if synonyms else ""
     antonyms = ", ".join(json.loads(antonyms)) if antonyms else ""
 
-    box_height = len(meanings.split("\n")) * 100
-    print(box_height, meanings)
+    # box_height = len(meanings.split("\n")) * 100
+    # print(box_height, meanings)
     
     # Editable fields
     new_meanings = st.text_area("Meanings (Newline separated)", meanings, height=box_height)
