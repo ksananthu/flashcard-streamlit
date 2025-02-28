@@ -16,24 +16,41 @@ def init_db():
                       meanings TEXT,
                       synonyms TEXT,
                       antonyms TEXT,
-                      note TEXT DEFAULT '')''')
+                      note TEXT DEFAULT '',
+                      date_added TEXT DEFAULT CURRENT_TIMESTAMP)''')
     conn.commit()
     conn.close()
 
-def get_random_word():
-    """Retrieve a random word from the database."""
+def get_random_word(days=None):
+    """Retrieve a random word from the database within the given timeframe."""
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
-    cursor.execute("SELECT word FROM flashcards ORDER BY RANDOM() LIMIT 1")
+
+    if days:
+        cursor.execute('''SELECT word FROM flashcards 
+                          WHERE date_added >= datetime('now', ?) 
+                          ORDER BY RANDOM() LIMIT 1''', 
+                       (f"-{days} days",))
+    else:
+        cursor.execute("SELECT word FROM flashcards ORDER BY RANDOM() LIMIT 1")
+
     result = cursor.fetchone()
     conn.close()
+    
     return result[0] if result else "No words available"
 
-def get_word_count():
-    """Get the total count of words in the database."""
+def get_word_count(days=None):
+    """Get the count of words in the database within the given timeframe."""
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
-    cursor.execute("SELECT COUNT(*) FROM flashcards")
+
+    if days:
+        cursor.execute('''SELECT COUNT(*) FROM flashcards 
+                          WHERE date_added >= datetime('now', ?)''', 
+                       (f"-{days} days",))
+    else:
+        cursor.execute("SELECT COUNT(*) FROM flashcards")
+
     count = cursor.fetchone()[0]
     conn.close()
     return count

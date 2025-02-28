@@ -15,6 +15,8 @@ def show_edit_page():
     # Unpacking the tuple (since get_word_details returns a tuple)
     meanings, synonyms, antonyms, note = word_data
     
+    st.title(f"📚 {word}")
+    
 
     # Convert string lists to actual lists using eval() (ensure stored format is correct)
     
