@@ -19,19 +19,20 @@ def show_meaning_page():
     # Display meanings
     st.subheader("📖 Meanings")
     for meaning in eval(meanings):  # Convert string to list
-        st.markdown(f"- {meaning}")
+        st.markdown(f'<p class="meaning-text">- {meaning}</p>', unsafe_allow_html=True)
 
-    # Display synonyms
+    # Display synonyms with increased font size
     st.subheader("🔄 Synonyms")
-    st.markdown(", ".join(eval(synonyms)))
+    st.markdown(f'<p class="synonym-text">{", ".join(eval(synonyms))}</p>', unsafe_allow_html=True)
 
-    # Display antonyms
+    # Display antonyms with increased font size
     st.subheader("🚫 Antonyms")
-    st.markdown(", ".join(eval(antonyms)))
+    st.markdown(f'<p class="antonym-text">{", ".join(eval(antonyms))}</p>', unsafe_allow_html=True)
 
     # Display note
     st.subheader("📝 Note")
-    st.text(note if note else "No additional notes")
+    st.markdown(f'<p class="note-text">{note if note else "No additional notes"}</p>', unsafe_allow_html=True)
+
 
     # Navigation buttons
     if st.button("🔙 Back"):

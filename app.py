@@ -17,7 +17,7 @@ def load_css():
 def main():
     st.set_page_config(page_title="Flashcard App", layout="centered")
     
-    # load_css()
+    load_css()
     
     init_db()
 
@@ -34,7 +34,16 @@ def main():
     elif st.session_state.page == "edit":
         show_edit_page()
     else:
-        st.markdown(f"## {st.session_state.word}", unsafe_allow_html=True)
+        # st.markdown(f"## {st.session_state.word}", unsafe_allow_html=True)
+        st.markdown(
+                        f"""
+                        <div class="word-card">
+                            <h2>{st.session_state.word}</h2>
+                        </div>
+                        """,
+                        unsafe_allow_html=True
+                    )
+
 
         word_count = get_word_count()
         if st.button(f"🔄 Words: {word_count}", key="count_refresh"):

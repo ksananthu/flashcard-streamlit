@@ -1,31 +1,138 @@
-/* General Styling */
+/* ---- General Styling ---- */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
+    font-family: 'Poppins', sans-serif; /* Modern clean font */
+    background: linear-gradient(to right, #f4f4f4, #e8e8e8);
+    color: black;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Prevents unwanted scrollbars */
 }
 
-/* Streamlit Container */
+/* ---- Main Streamlit Container ---- */
 .stApp {
-    max-width: 400px;
-    margin: auto;
+    max-width: 100vw;
+    max-height: 100vh;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    background: rgb(217, 238, 231);
+    color: black;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
 }
 
-/* Buttons */
-button {
-    background-color: #007BFF;
-    color: white;
+/* ---- Headers ---- */
+h1, h2 {
+    text-align: center;
+    color: #222;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+h3 {
+    color: #222;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+/* ---- Increase Font Size for Meanings, Synonyms, and Antonyms ---- */
+.meaning-text {
+    font-size: 20px !important;
+    font-weight: bold;
+    color: black;
+    line-height: 1.6;
+}
+
+.synonym-text {
+    font-size: 18px !important;
+    font-weight: bold;
+    color: black;
+}
+
+.antonym-text {
+    font-size: 18px !important;
+    font-weight: bold;
+    color: black;
+}
+
+.note-text {
+    font-size: 18px !important;
+    font-weight: normal;
+    color: black;
+    background: #f8f9fa; /* Light gray background for better readability */
     padding: 10px;
     border-radius: 5px;
+    border-left: 4px solid #007BFF; /* Blue highlight on the left */
+}
+
+
+/* ---- Buttons ---- */
+button {
+    background: linear-gradient(to right, #afc5db, #89bdf1); /* Gradient button */
+    color: rgb(191, 226, 235);
+    padding: 12px 18px;
     font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background: linear-gradient(to right, #0056b3, #003f7f);
+    transform: scale(1.05);
 }
 
-/* Headers */
-h1, h2, h3 {
+/* ---- Input Fields & Text Areas ---- */
+textarea, input {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+    transition: 0.3s;
+}
+
+textarea:focus, input:focus {
+    border-color: #007BFF;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* ---- Scrollable Content ---- */
+.stTextArea {
+    max-height: 400px; /* Prevents text area from getting too large */
+    overflow-y: auto;
+}
+
+/* ---- Card-Like Styling for Displayed Words ---- */
+.word-card {
+    background: rgb(234, 235, 227);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
-    color: #444;
+    max-width: 90%;
+    margin: 20px auto;
+}
+
+/* ---- Mobile Friendly ---- */
+@media (max-width: 768px) {
+    .stApp {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 10px 15px;
+    }
 }
