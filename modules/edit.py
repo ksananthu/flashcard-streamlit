@@ -2,6 +2,7 @@ import streamlit as st
 from utils.database import get_word_details, update_word_details
 import json
 
+
 def show_edit_page():
     word = st.session_state.get("word", "No word selected")
 
@@ -13,6 +14,7 @@ def show_edit_page():
 
     # Unpacking the tuple (since get_word_details returns a tuple)
     meanings, synonyms, antonyms, note = word_data
+    
 
     # Convert string lists to actual lists using eval() (ensure stored format is correct)
     
@@ -24,8 +26,11 @@ def show_edit_page():
     synonyms = ", ".join(json.loads(synonyms)) if synonyms else ""
     antonyms = ", ".join(json.loads(antonyms)) if antonyms else ""
 
+    box_height = len(meanings.split("\n")) * 100
+    print(box_height, meanings)
+    
     # Editable fields
-    new_meanings = st.text_area("Meanings (Newline separated)", meanings)
+    new_meanings = st.text_area("Meanings (Newline separated)", meanings, height=box_height)
     new_synonyms = st.text_area("Synonyms (Comma separated)", synonyms)
     new_antonyms = st.text_area("Antonyms (Comma separated)", antonyms)
     new_note = st.text_area("Note", note)
