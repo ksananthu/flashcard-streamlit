@@ -41,3 +41,6 @@ def show_meaning_page():
     if st.button("✏️ Edit"):
         st.session_state.page = "edit"
         st.rerun()
+
+
+

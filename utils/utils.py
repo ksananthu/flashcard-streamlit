@@ -35,17 +35,24 @@ def export_json():
     for row in rows:
         word, meanings, synonyms, antonyms, note = row
 
-        # Ensure proper JSON parsing
-        meanings = json.loads(meanings) if meanings else []
-        synonyms = json.loads(synonyms) if synonyms else []
-        antonyms = json.loads(antonyms) if antonyms else []
+        meanings_list = json.loads(meanings) if meanings else []
+        synonyms_list = json.loads(synonyms) if synonyms else []
+        antonyms_list = json.loads(antonyms) if antonyms else []
         note = note if note else ""
-
+        
+        # data.append({
+        #     "word": word,
+        #     "meanings": meanings,
+        #     "synonyms": synonyms,
+        #     "antonyms": antonyms,
+        #     "note": note
+        # })
+    
         data.append({
             "word": word,
-            "meanings": meanings,
-            "synonyms": synonyms,
-            "antonyms": antonyms,
+            "meanings": meanings_list,
+            "synonyms": synonyms_list,
+            "antonyms": antonyms_list,
             "note": note
         })
 
@@ -54,12 +61,12 @@ def export_json():
     json_data = json.dumps(data, indent=4, ensure_ascii=False)
 
     # Save JSON to a file
-    with open(EXPORT_FILE, "w", encoding="utf-8") as f:
-        f.write(json_data)
+    # with open(EXPORT_FILE, "w", encoding="utf-8") as f:
+    #     f.write(json_data)
 
     # st.success("📥 JSON Exported Successfully!")
 
-    return EXPORT_FILE  # Return the JSON data for downloading
+    return json_data  # Return the JSON data for downloading
 
 
 def download_json():
@@ -69,6 +76,6 @@ def download_json():
     st.download_button(
         label="📥 Download Flashcards JSON",
         data=json_data,
-        file_name="flashcards.json",
+        file_name="flashcards-backup.json",
         mime="application/json",
     )
