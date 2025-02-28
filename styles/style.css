@@ -1,3 +1,16 @@
+
+/* Hide Streamlit top bar */
+#MainMenu {visibility: hidden;}
+header {visibility: hidden;}
+footer {visibility: hidden;}
+
+/* Remove extra top space */
+.block-container {
+    padding-top: 40px !important;
+    margin-top: -50px !important;
+}
+
+
 /* ---- General Styling ---- */
 body {
     font-family: 'Poppins', sans-serif; /* Modern clean font */
