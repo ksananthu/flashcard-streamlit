@@ -2,6 +2,7 @@ import streamlit as st
 from utils.database import get_word_details  # Ensure correct import
 
 def show_meaning_page():
+
     word = st.session_state.get("word", "No word selected")
 
     word_data = get_word_details(word)
@@ -19,7 +20,7 @@ def show_meaning_page():
     # Display meanings
     st.subheader("📖 Meanings")
     for meaning in eval(meanings):  # Convert string to list
-        st.markdown(f'<p class="meaning-text">- {meaning}</p>', unsafe_allow_html=True)
+        st.markdown(f'<p class="meaning-text"> {meaning}</p>', unsafe_allow_html=True)
 
     # Display synonyms with increased font size
     st.subheader("🔄 Synonyms")
