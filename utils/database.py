@@ -72,3 +72,13 @@ def update_word_details(word, meanings, synonyms, antonyms, note):
                    (meanings, synonyms, antonyms, note, word))
     conn.commit()
     conn.close()
+    
+#    
+def get_all_words():
+    """Return a list of all words in the database."""
+    conn = sqlite3.connect(DB_PATH)
+    cursor = conn.cursor()
+    cursor.execute("SELECT word FROM flashcards ORDER BY word ASC")
+    results = cursor.fetchall()
+    conn.close()
+    return [r[0] for r in results]

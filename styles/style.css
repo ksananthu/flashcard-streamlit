@@ -74,7 +74,7 @@ h3 {
 
 /* ---- Increase Font Size for Meanings, Synonyms, and Antonyms ---- */
 .meaning-text {
-    font-size: 20px !important;
+    font-size: 18px !important;
     font-weight: bold;
     color: black;
     line-height: 1.6;

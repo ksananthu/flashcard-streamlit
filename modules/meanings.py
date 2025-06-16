@@ -16,7 +16,11 @@ def show_meaning_page():
 
     # Display the word as the title
     st.title(f"📚 {word}")
-
+    
+    # Display note
+    st.subheader("📝 Note")
+    st.markdown(f'<p class="note-text">{note if note else "No additional notes"}</p>', unsafe_allow_html=True)
+    
     # Display meanings
     st.subheader("📖 Meanings")
     for meaning in eval(meanings):  # Convert string to list
@@ -30,18 +34,15 @@ def show_meaning_page():
     st.subheader("🚫 Antonyms")
     st.markdown(f'<p class="antonym-text">{", ".join(eval(antonyms))}</p>', unsafe_allow_html=True)
 
-    # Display note
-    st.subheader("📝 Note")
-    st.markdown(f'<p class="note-text">{note if note else "No additional notes"}</p>', unsafe_allow_html=True)
-
 
     # Navigation buttons
-    if st.button("🔙 Back"):
-        st.session_state.page = "home"
-        st.rerun()
 
     if st.button("✏️ Edit"):
         st.session_state.page = "edit"
+        st.rerun()
+        
+    if st.button("🔙 Back"):
+        st.session_state.page = "home"
         st.rerun()
 
 
