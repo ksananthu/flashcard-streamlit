@@ -83,18 +83,6 @@ def main():
         # vertical line
         st.markdown("---")
         
-        uploaded_file = st.file_uploader("📤 Import JSON", type=["json"], key="import_json")
-        if uploaded_file:
-            import_json(uploaded_file)
-            st.success("Data Imported Successfully!")
-            st.rerun()
-
-        # 📥 **Download JSON** button
-        download_json()
-
-        # vertical line
-        st.markdown("---")
-        
         # Search bar
         st.subheader("🔍 Search Word")
 
@@ -110,6 +98,19 @@ def main():
             st.session_state.word = st.session_state.search_word
             st.session_state.page = "meaning"
             st.rerun()
+        
+        
+        # vertical line
+        st.markdown("---")
+        
+        uploaded_file = st.file_uploader("📤 Import JSON", type=["json"], key="import_json")
+        if uploaded_file:
+            import_json(uploaded_file)
+            st.success("Data Imported Successfully!")
+            st.rerun()
+
+        # 📥 **Download JSON** button
+        download_json()
         
         
         
