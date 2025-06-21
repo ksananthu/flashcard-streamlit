@@ -120,10 +120,7 @@ def main():
     elif st.session_state.page == "edit":
         show_edit_page()
         
-    
-      # Add to top if not already
 
-    
 
 if __name__ == "__main__":
     main()

@@ -1,6 +1,31 @@
 import streamlit as st
 from utils.database import get_word_details  # Ensure correct import
 
+
+
+def parse_meaning_and_examples(text):
+    parts = text.split("=>")
+
+    meaning = parts[0].strip()
+    examples = []
+
+    for i in range(1, len(parts)):
+        example = parts[i].strip()
+
+        if '.' in example:
+            sentence, rest = example.split('.', 1)
+            sentence = sentence.strip() + '.'
+            parts[i] = rest.strip()
+        else:
+            sentence = example.strip()
+
+        if sentence:
+            examples.append(sentence)
+
+    return meaning, examples
+
+
+
 def show_meaning_page():
 
     word = st.session_state.get("word", "No word selected")
@@ -22,9 +47,22 @@ def show_meaning_page():
     st.markdown(f'<p class="note-text">{note if note else "No additional notes"}</p>', unsafe_allow_html=True)
     
     # Display meanings
+    # st.subheader("📖 Meanings")
+    # for meaning in eval(meanings):  # Convert string to list
+    #     st.markdown(f'<p class="meaning-text"> {meaning}</p>', unsafe_allow_html=True)
+    
+    # Display meanings with example bullets
     st.subheader("📖 Meanings")
-    for meaning in eval(meanings):  # Convert string to list
-        st.markdown(f'<p class="meaning-text"> {meaning}</p>', unsafe_allow_html=True)
+
+    for raw in eval(meanings):  # meanings is a list of raw strings
+        meaning, examples = parse_meaning_and_examples(raw)
+
+        # Show the main definition
+        st.markdown(f'<p class="meaning-text">{meaning}</p>', unsafe_allow_html=True)
+
+        # Show the examples as bullets in italics
+        for ex in examples:
+            st.markdown(f'<ul style="margin-top: -10px;"><li><i>{ex}</i></li></ul>', unsafe_allow_html=True)
 
     # Display synonyms with increased font size
     st.subheader("🔄 Synonyms")
